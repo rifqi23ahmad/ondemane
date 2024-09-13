@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk Makanan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Katalog Produk Makanan</h1>
+    </header>
+
+    <main>
+        <section class="product-list">
+            <div class="product" data-id="1">
+                <img src="gambar1.jpg" alt="Produk 1">
+                <h2>Produk 1</h2>
+                <p>Rp 50.000</p>
+                <button class="add-to-cart">Tambah</button>
+            </div>
+            <div class="product" data-id="2">
+                <img src="gambar2.jpg" alt="Produk 2">
+                <h2>Produk 2</h2>
+                <p>Rp 75.000</p>
+                <button class="add-to-cart">Tambah</button>
+            </div>
+            <!-- Tambahkan lebih banyak produk di sini -->
+        </section>
+
+        <section class="cart">
+            <h2>Keranjang</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: <span id="cart-total">Rp 0</span></p>
+            <button id="checkout-btn">Pesan</button>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

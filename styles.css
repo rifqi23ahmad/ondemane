@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.product-list, .cart {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    max-width: 500px; /* Maksimal lebar untuk keranjang agar tampak lebih rapi */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-list {
+    flex: 2;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.product p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.product button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.product button:hover {
+    background-color: #0056b3;
+}
+
+.cart {
+    text-align: center;
+}
+
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+#cart-total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+#checkout-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#checkout-btn:hover {
+    background-color: #218838;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    .product-list {
+        margin: 0;
+    }
+    
+    .product {
+        padding: 0.5rem;
+        border: none;
+    }
+    
+    .product img {
+        border-radius: 4px;
+    }
+    
+    .product button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .cart {
+        padding: 0.5rem;
+    }
+    
+    #checkout-btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
