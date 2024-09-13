@@ -77,5 +77,5 @@ function checkout() {
     const encodedSummary = encodeURIComponent(orderSummary);
 
     // Redirect ke WhatsApp
-    window.location.href = `https://wa.me/085174000214?text=${encodedSummary}`;
+    window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
 }
