@@ -25,9 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('checkout-btn').addEventListener('click', () => {
         const message = cart.map(item => `${item.name} (${item.quantity}) - Rp ${formatRupiah(item.price * item.quantity)}`).join('\n');
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`Pesanan:\n${message}\n\nTotal: Rp ${formatRupiah(total)}`)}`;
+        const whatsappUrl = `https://wa.me/6285174000214?text=${encodeURIComponent(`Pesanan:\n${message}\n\nTotal: Rp ${formatRupiah(total)}`)}`;
         window.open(whatsappUrl, '_blank');
     });
+    
 
     function updateCart() {
         cartItemsElement.innerHTML = '';
