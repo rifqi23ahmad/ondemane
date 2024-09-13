@@ -64,6 +64,7 @@ function updateCartUI() {
     // Aktifkan/Nonaktifkan tombol pesan
     checkoutBtn.disabled = total === 0;
 }
+
 function checkout() {
     if (total === 0) return;
 
@@ -71,16 +72,16 @@ function checkout() {
     let orderSummary = 'Onde Mane\n\n';
     
     // Header with aligned columns
-    orderSummary += 'Produk'.padEnd(30) + 'Qty'.padStart(7) + 'Harga'.padStart(20) ;
-    orderSummary += '----------------------------------------------  --------------------  --------------------\n';
+    orderSummary += 'Produk    Qty    Harga\n';
+    orderSummary += '------------------------------\n';
 
     // Add rows with aligned columns
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(30)} ${item.quantity.toString().padStart(6)} ${formatCurrency(item.price).padStart(20)} ${formatCurrency(item.totalPrice).padStart(20)}\n`;
+        orderSummary += `${name.padEnd(10).slice(0, 10)} ${item.quantity.toString().padStart(2)} ${formatCurrency(item.price).padStart(20)}\n`;
     }
 
     // Total line
-    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(50)}\n`;
+    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20)}\n`;
 
     // Encode summary for URL
     const encodedSummary = encodeURIComponent(orderSummary);
