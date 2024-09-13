@@ -21,29 +21,31 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCart();
         });
     });
+
     document.getElementById('checkout-btn').addEventListener('click', () => {
         // Membuat judul pesan
         let message = 'Pesanan Anda:\n';
         
         // Menambahkan header kolom
-        message += '--------------------------------------\n';
-        message += 'Nama Produk\tQty\tHarga\n';
-        message += '--------------------------------------\n';
+        message += '=========================\n';
+        message += 'Nama Produk | Qty | Harga\n';
+        message += '=========================\n';
         
         // Menambahkan daftar produk dari keranjang
         message += cart.map(item => 
-            `${item.name}\t${item.quantity}\tRp ${formatRupiah(item.price * item.quantity)}`
+            `${item.name} | ${item.quantity} | Rp ${formatRupiah(item.price * item.quantity)}`
         ).join('\n');
         
         // Menambahkan total keseluruhan
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        message += `\n--------------------------------------\n`;
-        message += `Total:\t\t\tRp ${formatRupiah(total)}`;
-        
+        message += `\n=========================\n`;
+        message += `Total: Rp ${formatRupiah(total)}\n`;
+    
         // Membuat URL WhatsApp dengan pesan yang telah diformat
         const whatsappUrl = `https://wa.me/6285174000214?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     });
+    
     
     
 
