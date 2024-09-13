@@ -62,6 +62,7 @@ function updateCartUI() {
     table.className = 'cart-table';
 
     for (const [name, item] of Object.entries(cart)) {
+        if (item.quantity > 0) {
         const row = document.createElement('tr');
 
         const itemName = document.createElement('td');
@@ -87,6 +88,7 @@ function updateCartUI() {
 
     cartTotal.innerHTML = `Total Pesanan: ${formatCurrency(total)}`;
     checkoutBtn.disabled = total === 0;
+}
 }
 
 function formatCurrency(value) {
