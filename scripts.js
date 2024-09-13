@@ -68,16 +68,14 @@ function updateCartUI() {
 function checkout() {
     if (total === 0) return;
 
-    // Title centered with spacing for better alignment
+    // Title centered with additional spacing
     let orderSummary = 'Onde Mane\n\n';
-    orderSummary += '------------' + '---------' + '---------------------' + '--------------------\n';
-    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(9, ' ') + 'Harga'.padEnd(21, ' ') + 'Total\n';
-    orderSummary += '------------' + '---------' + '---------------------' + '--------------------\n';
+    orderSummary += '------------------------------  --------------------  --------------------\n';
 
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(9, ' ')} ${formatCurrency(item.price).padEnd(21, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
+        orderSummary += `${name.padEnd(30)} ${item.quantity.toString().padStart(6)} ${formatCurrency(item.price).padStart(20)} ${formatCurrency(item.totalPrice).padStart(20)}\n`;
     }
-    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
+    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(50)}`;
 
     // Encode summary for URL
     const encodedSummary = encodeURIComponent(orderSummary);
@@ -85,4 +83,3 @@ function checkout() {
     // Redirect to WhatsApp
     window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
 }
-
