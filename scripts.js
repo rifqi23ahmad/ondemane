@@ -68,18 +68,18 @@ function updateCartUI() {
 function checkout() {
     if (total === 0) return;
 
-    let orderSummary = 'Pesanan:\n';
-    orderSummary += 'Item'.padEnd(40, ' ') + 'Qty'.padEnd(3, ' ') + 'Total\n';
-    orderSummary += '-'.repeat(40) + ' ' + '-'.repeat(3) + ' ' + '-'.repeat(20) + '\n';
+    let orderSummary = 'Onde Mane\n\n';
+    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(2, ' ') + 'Harga'.padEnd(20, ' ') + 'Total\n';
+    orderSummary += '-'.repeat(12) + ' ' + '-'.repeat(2) + ' ' + '-'.repeat(20) + ' ' + '-'.repeat(20) + '\n';
 
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(40, ' ')} ${item.quantity.toString().padStart(3, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
+        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(2, ' ')} ${formatCurrency(item.price).padStart(20, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
     }
     orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
 
-    // Encode summary untuk URL
+    // Encode summary for URL
     const encodedSummary = encodeURIComponent(orderSummary);
 
-    // Redirect ke WhatsApp
+    // Redirect to WhatsApp
     window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
 }
