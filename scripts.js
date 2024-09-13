@@ -71,8 +71,8 @@ function checkout() {
     let orderSummary = 'Onde Mane\n\n';
     
     // Header with aligned columns
-    orderSummary += 'Produk'.padEnd(30) + 'Qty'.padStart(6) + 'Harga'.padStart(20) + 'Total\n';
-    orderSummary += '----------------------------------------------  --------------------  --------------------  --------------------\n';
+    orderSummary += 'Produk'.padEnd(30) + 'Qty'.padStart(7) + 'Harga'.padStart(20) ;
+    orderSummary += '----------------------------------------------  --------------------  --------------------\n';
 
     // Add rows with aligned columns
     for (const [name, item] of Object.entries(cart)) {
