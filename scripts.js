@@ -94,7 +94,6 @@ function updateCartUI() {
 function formatCurrency(value) {
     return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 }
-
 function checkout() {
     if (total === 0) return;
 
@@ -102,17 +101,29 @@ function checkout() {
     orderSummary += 'Qty        Harga              Total Harga    Jajanan\n';
     orderSummary += '----------------------------------------------------------------------\n';
 
-    for (const [name, item] of Object.entries(cart)) {
-        let quantity = item.quantity.toString().padStart(2);
-        let price = formatCurrency(item.price).padStart(15);
-        let totalPrice = formatCurrency(item.totalPrice).padStart(15);
-        let productName = name.padEnd(14).slice(0, 14);
+    let hasItems = false; // Flag to check if there are items with a quantity greater than 0
 
-        orderSummary += `${quantity}    ${price}    ${totalPrice}    ${productName}\n`;
+    for (const [name, item] of Object.entries(cart)) {
+        if (item.quantity > 0) {
+            hasItems = true; // At least one item with a quantity greater than 0
+            
+            let quantity = item.quantity.toString().padStart(2);
+            let price = formatCurrency(item.price).padStart(15);
+            let totalPrice = formatCurrency(item.totalPrice).padStart(15);
+            let productName = name.padEnd(14).slice(0, 14);
+
+            orderSummary += `${quantity}    ${price}    ${totalPrice}    ${productName}\n`;
+        }
     }
 
-    orderSummary += `\n*Total Pesanan:* ${formatCurrency(total).padStart(15)}\n`;
+    // Only proceed if there are items in the cart
+    if (hasItems) {
+        orderSummary += `\n*Total Pesanan:* ${formatCurrency(total).padStart(15)}\n`;
 
-    const encodedSummary = encodeURIComponent(orderSummary);
-    window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
+        const encodedSummary = encodeURIComponent(orderSummary);
+        window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
+    }
 }
+
+
+
