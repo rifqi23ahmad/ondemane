@@ -71,7 +71,7 @@ function checkout() {
     // Title centered with spacing for better alignment
     let orderSummary = 'Onde Mane\n\n';
     orderSummary += '------------' + '---------' + '---------------------' + '--------------------\n';
-    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(15, ' ') + 'Harga'.padEnd(21, ' ') + 'Total\n';
+    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(9, ' ') + 'Harga'.padEnd(21, ' ') + 'Total\n';
     orderSummary += '------------' + '---------' + '---------------------' + '--------------------\n';
 
     for (const [name, item] of Object.entries(cart)) {
