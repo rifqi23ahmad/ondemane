@@ -29,47 +29,37 @@ function updateCartUI() {
     // Kosongkan keranjang di tampilan
     cartItems.innerHTML = '';
 
-    // Tambahkan header kolom
-    const headerRow = document.createElement('div');
-    headerRow.id = 'cart-items-header';
-    headerRow.innerHTML = `
-        <span>Makanan</span>
-        <span>Qty</span>
-        <span>Harga</span>
-        <span>Total Harga</span>
-    `;
-    cartItems.appendChild(headerRow);
+    // Tambahkan tabel
+    const table = document.createElement('table');
+    table.className = 'cart-table';
 
-    // Tambahkan item-item ke tampilan
+    // Tambahkan item-item ke tabel
     for (const [name, item] of Object.entries(cart)) {
-        const li = document.createElement('li');
+        const row = document.createElement('tr');
 
-        const itemName = document.createElement('span');
+        const itemName = document.createElement('td');
         itemName.className = 'item-name';
-        itemName.textContent = name.padEnd(12, ' ');
+        itemName.textContent = name;
 
-        const itemQty = document.createElement('span');
+        const itemQty = document.createElement('td');
         itemQty.className = 'item-qty';
-        itemQty.textContent = item.quantity.toString().padStart(2, ' ');
+        itemQty.textContent = item.quantity;
 
-        const itemPrice = document.createElement('span');
-        itemPrice.className = 'item-price';
-        itemPrice.textContent = formatCurrency(item.price).padStart(20, ' ');
-
-        const itemTotal = document.createElement('span');
+        const itemTotal = document.createElement('td');
         itemTotal.className = 'item-total';
-        itemTotal.textContent = formatCurrency(item.totalPrice).padStart(20, ' ');
+        itemTotal.textContent = formatCurrency(item.totalPrice);
 
-        li.appendChild(itemName);
-        li.appendChild(itemQty);
-        li.appendChild(itemPrice);
-        li.appendChild(itemTotal);
+        row.appendChild(itemName);
+        row.appendChild(itemQty);
+        row.appendChild(itemTotal);
 
-        cartItems.appendChild(li);
+        table.appendChild(row);
     }
 
+    cartItems.appendChild(table);
+
     // Update total
-    cartTotal.textContent = `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
+    cartTotal.innerHTML = `Total Pesanan: ${formatCurrency(total)}`;
 
     // Aktifkan/Nonaktifkan tombol pesan
     checkoutBtn.disabled = total === 0;
@@ -79,11 +69,11 @@ function checkout() {
     if (total === 0) return;
 
     let orderSummary = 'Pesanan:\n';
-    orderSummary += 'Makanan'.padEnd(12, ' ') + 'Qty'.padEnd(4, ' ') + 'Harga'.padEnd(20, ' ') + 'Total Harga\n';
-    orderSummary += '-'.repeat(12) + ' ' + '-'.repeat(4) + ' ' + '-'.repeat(20) + ' ' + '-'.repeat(20) + '\n';
+    orderSummary += 'Item'.padEnd(40, ' ') + 'Qty'.padEnd(3, ' ') + 'Total\n';
+    orderSummary += '-'.repeat(40) + ' ' + '-'.repeat(3) + ' ' + '-'.repeat(20) + '\n';
 
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(2, ' ')} ${formatCurrency(item.price).padStart(20, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
+        orderSummary += `${name.padEnd(40, ' ')} ${item.quantity.toString().padStart(3, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
     }
     orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
 

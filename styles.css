@@ -84,75 +84,64 @@ button:disabled {
     cursor: not-allowed;
 }
 
+#cart {
+    display: flex;
+    flex-direction: column;
+}
+
 #cart-items {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-#cart-items li {
-    display: grid;
-    grid-template-columns: 12em 2em 20em 20em;
-    padding: 5px 0;
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table td {
+    padding: 10px;
+    text-align: left;
     border-bottom: 1px solid #ddd;
-    font-family: 'Courier New', Courier, monospace;
-    align-items: center;
 }
 
-#cart-items .item-name {
-    padding-right: 5px;
-}
-
-#cart-items .item-qty {
-    text-align: center;
-}
-
-#cart-items .item-price, #cart-items .item-total {
-    text-align: right;
+.cart-table td.item-qty, .cart-table td.item-total {
+    text-align: left; /* Align to the left for all cells */
 }
 
 #cart-total {
     font-family: 'Courier New', Courier, monospace;
-    text-align: right;
-    padding-top: 10px;
+    text-align: left; /* Align total to the left */
+    padding: 10px;
     border-top: 1px solid #ddd;
-}
-
-#cart-items-header {
-    display: grid;
-    grid-template-columns: 12em 2em 20em 20em;
     font-weight: bold;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    width: fit-content;
 }
 
 @media (max-width: 768px) {
-    .product {
-        flex-direction: column;
-        align-items: flex-start;
+    .cart-table td {
+        font-size: 0.9em;
+        padding: 8px;
     }
 
-    .product img {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    #product-list, #cart {
-        padding: 10px;
-    }
-
-    button {
+    #cart-total {
         font-size: 0.9em;
     }
 }
 
 @media (max-width: 480px) {
-    .product-name {
-        font-size: 1em;
+    .cart-table td {
+        display: block;
+        text-align: left; /* Ensure text is left-aligned */
+        padding: 8px 0;
     }
 
-    .product-price {
-        font-size: 0.9em;
+    .cart-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
     }
 }
