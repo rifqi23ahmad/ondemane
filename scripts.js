@@ -70,12 +70,22 @@ function checkout() {
 
     // Title centered with additional spacing
     let orderSummary = 'Onde Mane\n\n';
-    orderSummary += '------------------------------  --------------------  --------------------\n';
 
+    // Border line
+    const border = '--------------------------------  --------------------  --------------------  --------------------\n';
+
+    // Header and border for better visual separation
+    orderSummary += border;
+
+    // Add rows with borders
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(30)} ${item.quantity.toString().padStart(6)} ${formatCurrency(item.price).padStart(20)} ${formatCurrency(item.totalPrice).padStart(20)}\n`;
+        orderSummary += `| ${name.padEnd(30)} | ${item.quantity.toString().padStart(6)} | ${formatCurrency(item.price).padStart(20)} | ${formatCurrency(item.totalPrice).padStart(20)} |\n`;
+        orderSummary += border;
     }
-    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(50)}`;
+
+    // Total line with border
+    orderSummary += `| Total Pesanan: ${formatCurrency(total).padStart(50)} |\n`;
+    orderSummary += border;
 
     // Encode summary for URL
     const encodedSummary = encodeURIComponent(orderSummary);
