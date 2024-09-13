@@ -68,12 +68,13 @@ function updateCartUI() {
 function checkout() {
     if (total === 0) return;
 
+    // Center the title and adjust spacing for alignment
     let orderSummary = 'Onde Mane\n\n';
-    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(2, ' ') + 'Harga'.padEnd(20, ' ') + 'Total\n';
-    orderSummary += '-'.repeat(12) + ' ' + '-'.repeat(2) + ' ' + '-'.repeat(20) + ' ' + '-'.repeat(20) + '\n';
+    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(7, ' ') + 'Harga'.padEnd(15, ' ') + 'Total\n';
+    orderSummary += '-'.repeat(12) + ' ' + '-'.repeat(7) + ' ' + '-'.repeat(15) + ' ' + '-'.repeat(20) + '\n';
 
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(2, ' ')} ${formatCurrency(item.price).padStart(20, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
+        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(7, ' ')} ${formatCurrency(item.price).padEnd(15, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
     }
     orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
 
@@ -83,3 +84,4 @@ function checkout() {
     // Redirect to WhatsApp
     window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
 }
+
