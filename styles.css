@@ -1,141 +1,149 @@
-* {
-    box-sizing: border-box;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
 header {
-    background-color: #333;
+    background-color: #ff6f61;
     color: white;
-    padding: 1rem;
     text-align: center;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 20px;
 }
 
-.product-list, .cart {
-    background: white;
+#product-list, #cart {
+    background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 1rem;
-    padding: 1rem;
-    max-width: 500px; /* Maksimal lebar untuk keranjang agar tampak lebih rapi */
-    margin-left: auto;
-    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
 }
 
-.product-list {
-    flex: 2;
+h2 {
+    margin-top: 0;
 }
 
 .product {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
 }
 
 .product img {
-    max-width: 100%;
-    height: auto;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
     border-radius: 8px;
+    margin-right: 15px;
 }
 
-.product h2 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
+.product-info {
+    flex: 1;
 }
 
-.product p {
-    font-size: 1rem;
-    color: #555;
+.product-name {
+    font-size: 1.2em;
+    margin: 0;
 }
 
-.product button {
-    background-color: #007bff;
+.product-price {
+    color: #ff6f61;
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+button {
+    background-color: #ff6f61;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+    padding: 10px 15px;
     border-radius: 5px;
-    font-size: 0.9rem;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
 }
 
-.product button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #e55b50;
 }
 
-.cart {
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#cart-items .item-name {
+    width: 12em;
+}
+
+#cart-items .item-qty {
+    width: 2em;
     text-align: center;
 }
 
-.cart ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.cart li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+#cart-items .item-price, #cart-items .item-total {
+    width: 20em;
+    text-align: right;
 }
 
 #cart-total {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 1rem 0;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right;
+    padding-top: 10px;
 }
 
-#checkout-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-#checkout-btn:hover {
-    background-color: #218838;
-}
-
-/* Responsif */
-@media (max-width: 600px) {
-    .product-list {
-        margin: 0;
-    }
-    
+@media (max-width: 768px) {
     .product {
-        padding: 0.5rem;
-        border: none;
+        flex-direction: column;
+        align-items: flex-start;
     }
-    
+
     .product img {
-        border-radius: 4px;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
-    
-    .product button {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
+
+    #product-list, #cart {
+        padding: 10px;
     }
-    
-    .cart {
-        padding: 0.5rem;
+
+    button {
+        font-size: 0.9em;
     }
-    
-    #checkout-btn {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+}
+
+@media (max-width: 480px) {
+    .product-name {
+        font-size: 1em;
+    }
+
+    .product-price {
+        font-size: 0.9em;
     }
 }

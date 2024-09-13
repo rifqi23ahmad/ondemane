@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Produk Makanan</title>
+    <title>Website Jualan Makanan</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Katalog Produk Makanan</h1>
+        <h1>Website Jualan Makanan</h1>
     </header>
 
     <main>
-        <section class="product-list">
-            <div class="product" data-id="1">
-                <img src="ondev.jpg" alt="ON DEV">
-                <h2>Onde-Onde</h2>
-                <p>Rp 50.000</p>
-                <button class="add-to-cart">Tambah</button>
+        <section id="product-list">
+            <h2>Daftar Produk</h2>
+            <div class="product">
+                <img src="images/makanan-a.jpg" alt="Makanan A">
+                <div class="product-info">
+                    <h3 class="product-name">Makanan A</h3>
+                    <p class="product-price">Rp 50.000</p>
+                    <button class="add-to-cart" onclick="addToCart('Makanan A', 50000)">Tambah ke Keranjang</button>
+                </div>
             </div>
-            <div class="product" data-id="2">
-                <img src="ON DEV.jpg" alt="ON DEV">
-                <h2>Lontong</h2>
-                <p>Rp 75.000</p>
-                <button class="add-to-cart">Tambah</button>
+            <div class="product">
+                <img src="images/makanan-b.jpg" alt="Makanan B">
+                <div class="product-info">
+                    <h3 class="product-name">Makanan B</h3>
+                    <p class="product-price">Rp 75.000</p>
+                    <button class="add-to-cart" onclick="addToCart('Makanan B', 75000)">Tambah ke Keranjang</button>
+                </div>
             </div>
-            <!-- Tambahkan lebih banyak produk di sini -->
+            <!-- Tambahkan produk lainnya di sini -->
         </section>
 
-        <section class="cart">
-            <h2>Keranjang</h2>
-            <ul id="cart-items"></ul>
-            <p>Total: <span id="cart-total">Rp 0</span></p>
-            <button id="checkout-btn">Pesan</button>
+        <section id="cart">
+            <h2>Keranjang Belanja</h2>
+            <ul id="cart-items">
+                <!-- Item keranjang akan ditambahkan di sini -->
+            </ul>
+            <p id="cart-total">Total: Rp 0</p>
+            <button id="checkout-btn" disabled onclick="checkout()">Pesan</button>
         </section>
     </main>
 
