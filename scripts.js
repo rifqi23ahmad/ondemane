@@ -29,6 +29,17 @@ function updateCartUI() {
     // Kosongkan keranjang di tampilan
     cartItems.innerHTML = '';
 
+    // Tambahkan header kolom
+    const headerRow = document.createElement('div');
+    headerRow.id = 'cart-items-header';
+    headerRow.innerHTML = `
+        <span>Makanan</span>
+        <span>Qty</span>
+        <span>Harga</span>
+        <span>Total Harga</span>
+    `;
+    cartItems.appendChild(headerRow);
+
     // Tambahkan item-item ke tampilan
     for (const [name, item] of Object.entries(cart)) {
         const li = document.createElement('li');
@@ -58,7 +69,7 @@ function updateCartUI() {
     }
 
     // Update total
-    cartTotal.textContent = `Total: ${formatCurrency(total).padStart(20, ' ')}`;
+    cartTotal.textContent = `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
 
     // Aktifkan/Nonaktifkan tombol pesan
     checkoutBtn.disabled = total === 0;
@@ -68,10 +79,13 @@ function checkout() {
     if (total === 0) return;
 
     let orderSummary = 'Pesanan:\n';
+    orderSummary += 'Makanan'.padEnd(12, ' ') + 'Qty'.padEnd(4, ' ') + 'Harga'.padEnd(20, ' ') + 'Total Harga\n';
+    orderSummary += '-'.repeat(12) + ' ' + '-'.repeat(4) + ' ' + '-'.repeat(20) + ' ' + '-'.repeat(20) + '\n';
+
     for (const [name, item] of Object.entries(cart)) {
         orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(2, ' ')} ${formatCurrency(item.price).padStart(20, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
     }
-    orderSummary += `Total: ${formatCurrency(total).padStart(20, ' ')}`;
+    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
 
     // Encode summary untuk URL
     const encodedSummary = encodeURIComponent(orderSummary);

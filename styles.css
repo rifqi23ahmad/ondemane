@@ -91,24 +91,23 @@ button:disabled {
 }
 
 #cart-items li {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 12em 2em 20em 20em;
     padding: 5px 0;
     border-bottom: 1px solid #ddd;
     font-family: 'Courier New', Courier, monospace;
+    align-items: center;
 }
 
 #cart-items .item-name {
-    width: 12em;
+    padding-right: 5px;
 }
 
 #cart-items .item-qty {
-    width: 2em;
     text-align: center;
 }
 
 #cart-items .item-price, #cart-items .item-total {
-    width: 20em;
     text-align: right;
 }
 
@@ -116,6 +115,16 @@ button:disabled {
     font-family: 'Courier New', Courier, monospace;
     text-align: right;
     padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#cart-items-header {
+    display: grid;
+    grid-template-columns: 12em 2em 20em 20em;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
