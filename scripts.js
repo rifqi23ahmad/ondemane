@@ -68,13 +68,14 @@ function updateCartUI() {
 function checkout() {
     if (total === 0) return;
 
-    // Center the title and adjust spacing for alignment
+    // Title centered with spacing for better alignment
     let orderSummary = 'Onde Mane\n\n';
-    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(7, ' ') + 'Harga'.padEnd(15, ' ') + 'Total\n';
-    orderSummary += '-'.repeat(12) + ' ' + '-'.repeat(7) + ' ' + '-'.repeat(15) + ' ' + '-'.repeat(20) + '\n';
+    orderSummary += '------------' + '---------' + '---------------------' + '--------------------\n';
+    orderSummary += 'Item'.padEnd(12, ' ') + 'Qty'.padEnd(9, ' ') + 'Harga'.padEnd(21, ' ') + 'Total\n';
+    orderSummary += '------------' + '---------' + '---------------------' + '--------------------\n';
 
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(7, ' ')} ${formatCurrency(item.price).padEnd(15, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
+        orderSummary += `${name.padEnd(12, ' ')} ${item.quantity.toString().padStart(9, ' ')} ${formatCurrency(item.price).padEnd(21, ' ')} ${formatCurrency(item.totalPrice).padStart(20, ' ')}\n`;
     }
     orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20, ' ')}`;
 
