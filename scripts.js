@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const whatsappUrl = `https://wa.me/6285174000214?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     });
-            
+                
     
     function updateCart() {
         cartItemsElement.innerHTML = '';
