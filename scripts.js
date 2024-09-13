@@ -1,22 +1,52 @@
+// Get modal element
+const japarModal = document.getElementById("japar-list-modal");
+const openModalBtn = document.getElementById("open-japar-list-btn");
+const closeModalBtn = document.querySelector(".close-btn");
+
+// Open modal on button click
+openModalBtn.onclick = () => {
+    japarModal.style.display = "block";
+};
+
+// Close modal on close button
+closeModalBtn.onclick = () => {
+    japarModal.style.display = "none";
+};
+
+// Close modal when clicking outside the modal content
+window.onclick = (event) => {
+    if (event.target === japarModal) {
+        japarModal.style.display = "none";
+    }
+};
+
+// Cart and Quantity Management
 let cart = {};
 let total = 0;
 
-function formatCurrency(value) {
-    return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-}
-
-function addToCart(name, price) {
-    if (cart[name]) {
-        cart[name].quantity += 1;
-        cart[name].totalPrice += price;
-    } else {
+function updateQuantity(name, change) {
+    if (!cart[name]) {
+        const priceText = document.querySelector(`#${name} .product-price`).textContent;
+        const price = parseInt(priceText.replace(/[^\d]/g, ''), 10);
+        
         cart[name] = {
             price: price,
-            quantity: 1,
-            totalPrice: price
+            quantity: 0,
+            totalPrice: 0
         };
     }
-    total += price;
+
+    const newQuantity = cart[name].quantity + change;
+    if (newQuantity < 0) return;
+
+    cart[name].quantity = newQuantity;
+    cart[name].totalPrice = cart[name].price * newQuantity;
+    total += change * cart[name].price;
+
+    const quantityDisplay = document.getElementById(`${name}-quantity`);
+    if (quantityDisplay) {
+        quantityDisplay.textContent = cart[name].quantity;
+    }
 
     updateCartUI();
 }
@@ -26,14 +56,11 @@ function updateCartUI() {
     const cartTotal = document.getElementById('cart-total');
     const checkoutBtn = document.getElementById('checkout-btn');
 
-    // Kosongkan keranjang di tampilan
     cartItems.innerHTML = '';
 
-    // Tambahkan tabel
     const table = document.createElement('table');
     table.className = 'cart-table';
 
-    // Tambahkan item-item ke tabel
     for (const [name, item] of Object.entries(cart)) {
         const row = document.createElement('tr');
 
@@ -58,34 +85,32 @@ function updateCartUI() {
 
     cartItems.appendChild(table);
 
-    // Update total
     cartTotal.innerHTML = `Total Pesanan: ${formatCurrency(total)}`;
-
-    // Aktifkan/Nonaktifkan tombol pesan
     checkoutBtn.disabled = total === 0;
+}
+
+function formatCurrency(value) {
+    return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 }
 
 function checkout() {
     if (total === 0) return;
 
-    // Title centered with additional spacing
-    let orderSummary = '--------------------Onde Mane---------------\n\n';
-    
-    // Header with aligned columns
-    orderSummary += 'Produk         Qty       Harga\n';
-    orderSummary += '------------------------------------------\n';
+    let orderSummary = '---------------------------Onde Mane------------------------------\n\n';
+    orderSummary += 'Qty        Harga              Total Harga    Jajanan\n';
+    orderSummary += '----------------------------------------------------------------------\n';
 
-    // Add rows with aligned columns
     for (const [name, item] of Object.entries(cart)) {
-        orderSummary += `${name.padEnd(10).slice(0, 10)} ${item.quantity.toString().padStart(2)} ${formatCurrency(item.price).padStart(20)}\n`;
+        let quantity = item.quantity.toString().padStart(2);
+        let price = formatCurrency(item.price).padStart(15);
+        let totalPrice = formatCurrency(item.totalPrice).padStart(15);
+        let productName = name.padEnd(14).slice(0, 14);
+
+        orderSummary += `${quantity}    ${price}    ${totalPrice}    ${productName}\n`;
     }
 
-    // Total line
-    orderSummary += `Total Pesanan: ${formatCurrency(total).padStart(20)}\n`;
+    orderSummary += `\n*Total Pesanan:* ${formatCurrency(total).padStart(15)}\n`;
 
-    // Encode summary for URL
     const encodedSummary = encodeURIComponent(orderSummary);
-
-    // Redirect to WhatsApp
     window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
 }

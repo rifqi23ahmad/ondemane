@@ -3,45 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Jualan Makanan</title>
+    <title>Onde Mane</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Website Jualan Makanan</h1>
-    </header>
+    <div class="header-container">
+        <img src="logo.jpg" alt="Logo" class="logo"> <!-- Update to your logo image -->
+    </div>
+</header>
 
-    <main>
-        <section id="product-list">
-            <h2>Daftar Produk</h2>
-            <div class="product">
-                <img src="Administrasi.png" alt="Onde-Onde">
-                <div class="product-info">
-                    <h3 class="product-name">Onde-Onde</h3>
-                    <p class="product-price">Rp 50.000</p>
-                    <button class="add-to-cart" onclick="addToCart('Onde-Onde', 50000)">Tambah ke Keranjang</button>
+    <!-- Button to open the modal -->
+    <div class="button-container">
+        <button id="open-japar-list-btn">Japar List</button>
+    </div>
+
+    <!-- Modal for Japar List -->
+    <div id="japar-list-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Japar List</h2>
+            <div class="modal-scrollable">
+                <div class="product" id="Bakpau">
+                    <img src="bakpau.png" alt="Bakpau">
+                    <div class="product-info">
+                        <h3 class="product-name">Bakpau</h3>
+                        <p class="product-price">Rp 3.500</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Bakpau', -1)">-</button>
+                            <span class="quantity-display" id="Bakpau-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Bakpau', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="SusuKacang">
+                    <img src="susukacang.png" alt="Susu Kacang">
+                    <div class="product-info">
+                        <h3 class="product-name">Susu Kacang</h3>
+                        <p class="product-price">Rp 5.000</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('SusuKacang', -1)">-</button>
+                            <span class="quantity-display" id="SusuKacang-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('SusuKacang', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="OndeOnde">
+                    <img src="ondeonde.png" alt="Onde-onde">
+                    <div class="product-info">
+                        <h3 class="product-name">Onde-onde</h3>
+                        <p class="product-price">Rp 3.000</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('OndeOnde', -1)">-</button>
+                            <span class="quantity-display" id="OndeOnde-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('OndeOnde', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Lemper">
+                    <img src="lemper.png" alt="Lemper">
+                    <div class="product-info">
+                        <h3 class="product-name">Lemper</h3>
+                        <p class="product-price">Rp 2.500</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Lemper', -1)">-</button>
+                            <span class="quantity-display" id="Lemper-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Lemper', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Bugis">
+                    <img src="bugis.png" alt="Bugis">
+                    <div class="product-info">
+                        <h3 class="product-name">Bugis</h3>
+                        <p class="product-price">Rp 2.500</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Bugis', -1)">-</button>
+                            <span class="quantity-display" id="Bugis-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Bugis', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Pastel">
+                    <img src="pastel.png" alt="Pastel">
+                    <div class="product-info">
+                        <h3 class="product-name">Pastel</h3>
+                        <p class="product-price">Rp 3.500</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Pastel', -1)">-</button>
+                            <span class="quantity-display" id="Pastel-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Pastel', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Mayo">
+                    <img src="mayo.png" alt="Mayo">
+                    <div class="product-info">
+                        <h3 class="product-name">Mayo</h3>
+                        <p class="product-price">Rp 3.000</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Mayo', -1)">-</button>
+                            <span class="quantity-display" id="Mayo-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Mayo', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Wajil">
+                    <img src="wajil.png" alt="Wajil">
+                    <div class="product-info">
+                        <h3 class="product-name">Wajil</h3>
+                        <p class="product-price">Rp 3.000</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Wajil', -1)">-</button>
+                            <span class="quantity-display" id="Wajil-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Wajil', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Apem">
+                    <img src="apem.png" alt="Apem">
+                    <div class="product-info">
+                        <h3 class="product-name">Apem</h3>
+                        <p class="product-price">Rp 2.500</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Apem', -1)">-</button>
+                            <span class="quantity-display" id="Apem-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Apem', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product" id="Lapis">
+                    <img src="lapis.png" alt="Lapis">
+                    <div class="product-info">
+                        <h3 class="product-name">Lapis</h3>
+                        <p class="product-price">Rp 2.500</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('Lapis', -1)">-</button>
+                            <span class="quantity-display" id="Lapis-quantity">0</span>
+                            <button class="quantity-btn" onclick="updateQuantity('Lapis', 1)">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="product">
-                <img src="images/makanan-b.jpg" alt="Makanan B">
-                <div class="product-info">
-                    <h3 class="product-name">Makanan B</h3>
-                    <p class="product-price">Rp 75.000</p>
-                    <button class="add-to-cart" onclick="addToCart('Makanan B', 75000)">Tambah ke Keranjang</button>
-                </div>
-            </div>
-            <!-- Tambahkan produk lainnya di sini -->
-        </section>
+        </div>
+    </div>
 
-        <section id="cart">
-            <h2>Keranjang Belanja</h2>
-            <ul id="cart-items">
-                <!-- Item keranjang akan ditambahkan di sini -->
-            </ul>
-            <p id="cart-total">Total: Rp 0</p>
-            <button id="checkout-btn" disabled onclick="checkout()">Pesan</button>
-        </section>
-    </main>
+    <section id="cart">
+        <h2>Keranjang Belanja</h2>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Total Pesanan: Rp 0</p>
+        <button id="checkout-btn" disabled onclick="checkout()">Pesan</button>
+    </section>
 
     <script src="scripts.js"></script>
 </body>
