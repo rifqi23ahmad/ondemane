@@ -69,7 +69,7 @@ function checkout() {
     if (total === 0) return;
 
     // Title centered with additional spacing
-    let orderSummary = 'Onde Mane\n\n';
+    let orderSummary = '--------------------Onde Mane---------------\n\n';
     
     // Header with aligned columns
     orderSummary += 'Produk         Qty       Harga\n';
