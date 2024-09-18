@@ -1,3 +1,18 @@
+const imageModal = document.getElementById("image-modal");
+const modalImage = document.getElementById("modal-image");
+const closeImageModal = document.querySelector(".close-image-modal");
+
+document.querySelectorAll(".product img").forEach(image => {
+    image.addEventListener('click', function () {
+        modalImage.src = this.src;  // Set modal image source to the clicked image
+        imageModal.style.display = "block";  // Show the modal
+    });
+});
+
+closeImageModal.onclick = function () {
+    imageModal.style.display = "none";  // Close the modal
+};
+
 // Get modal element
 const japarModal = document.getElementById("japar-list-modal");
 const openModalBtn = document.getElementById("open-japar-list-btn");
@@ -124,6 +139,3 @@ function checkout() {
         window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
     }
 }
-
-
-
