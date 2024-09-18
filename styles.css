@@ -310,3 +310,20 @@ button:disabled {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Image inside the modal */
+#modal-image {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Close button for the modal */
+.close-image-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
