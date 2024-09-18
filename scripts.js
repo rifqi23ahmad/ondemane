@@ -140,68 +140,12 @@ function checkout() {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('image-modal');
-    const modalImage = document.getElementById('modal-image');
-    const closeBtn = document.querySelector('.close-image-modal');
-    const prevBtn = document.querySelector('.prev-slide');
-    const nextBtn = document.querySelector('.next-slide');
-
-    let currentImageIndex = 0;
-
-    const images = [
-        'bakpau.png',
-        'susukacang.png',
-        'ondeonde.png',
-        'lemper.png',
-        'bugis.png',
-        'pastel.png',
-        'mayo.png',
-        'wajik.png',
-        'apem.jpeg',
-        'bolu.png',
-        'combro.png',
-        'rotisrikaya.png',
-        'cucur.png',
-        'lapis.png'
-    ];
-
-    function showImage(index) {
-        modalImage.src = images[index];
-    }
-
-    function openModal(index) {
-        modal.style.display = 'flex';
-        currentImageIndex = index;
-        showImage(currentImageIndex);
-    }
-
     function closeModal() {
         modal.style.display = 'none';
     }
-
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        showImage(currentImageIndex);
-    }
-
-    function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        showImage(currentImageIndex);
-    }
-
-    document.querySelectorAll('.product img').forEach((img, index) => {
-        img.addEventListener('click', () => openModal(index));
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    nextBtn.addEventListener('click', showNextImage);
-    prevBtn.addEventListener('click', showPrevImage);
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             closeModal();
         }
     });
-});

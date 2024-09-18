@@ -342,36 +342,3 @@ button:disabled {
 .close-image-modal:hover {
     background-color: #f00; /* Change background color on hover */
 }
-
-/* Navigation buttons for the image modal */
-.prev-slide, .next-slide {
-    position: absolute;
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center vertically */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    color: #fff; /* White text */
-    border: none;
-    border-radius: 50%;
-    font-size: 30px;
-    width: 50px; /* Button width */
-    height: 50px; /* Button height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1001; /* Ensure it's on top */
-}
-
-/* Position previous button on the left */
-.prev-slide {
-    left: 10px; /* Adjust as needed */
-}
-
-/* Position next button on the right */
-.next-slide {
-    right: 10px; /* Adjust as needed */
-}
-
-.prev-slide:hover, .next-slide:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
-}
