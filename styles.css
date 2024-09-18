@@ -314,6 +314,9 @@ button:disabled {
 #modal-image {
     width: 100%; /* Make the image responsive */
     height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure image doesn't exceed modal width */
+    max-height: 100%; /* Ensure image doesn't exceed modal height */
+    object-fit: contain; /* Ensure image is contained within modal */
 }
 
 /* Close button for the modal */
@@ -327,3 +330,6 @@ button:disabled {
     cursor: pointer;
 }
 
+.close-image-modal:hover {
+    color: #f00; /* Change color on hover */
+}
