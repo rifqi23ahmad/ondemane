@@ -112,9 +112,9 @@ function formatCurrency(value) {
 function checkout() {
     if (total === 0) return;
 
-    let orderSummary = '---------------------------Onde Mane------------------------------\n\n';
+    let orderSummary = '-------------Onde Mane-------------\n\n';
     orderSummary += 'Qty        Harga            Jajanan\n';
-    orderSummary += '----------------------------------------------------------------------\n';
+    orderSummary += '---------------------------------------\n';
 
     let hasItems = false; // Flag to check if there are items with a quantity greater than 0
 
