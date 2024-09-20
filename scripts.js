@@ -113,7 +113,7 @@ function checkout() {
     if (total === 0) return;
 
     let orderSummary = '---------------------------Onde Mane------------------------------\n\n';
-    orderSummary += 'Qty        Harga              Total Harga    Jajanan\n';
+    orderSummary += 'Qty        Harga            Jajanan\n';
     orderSummary += '----------------------------------------------------------------------\n';
 
     let hasItems = false; // Flag to check if there are items with a quantity greater than 0
@@ -124,10 +124,9 @@ function checkout() {
             
             let quantity = item.quantity.toString().padStart(2);
             let price = formatCurrency(item.price).padStart(15);
-            let totalPrice = formatCurrency(item.totalPrice).padStart(15);
             let productName = name.padEnd(14).slice(0, 14);
 
-            orderSummary += `${quantity}    ${price}    ${totalPrice}    ${productName}\n`;
+            orderSummary += `${quantity}    ${price}    ${productName}\n`;
         }
     }
 
