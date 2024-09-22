@@ -1,10 +1,13 @@
+/* Body */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
+    overflow-y: auto; /* Enable page scrolling */
 }
 
+/* Header */
 header {
     background-color: #ff6f61;
     color: white;
@@ -13,26 +16,33 @@ header {
     position: sticky;
     top: 0;
     width: 100%;
+    z-index: 100;
 }
 
+/* Main Content */
 main {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    overflow-y: auto; /* Allow scrolling for main content */
 }
 
+/* Product List and Cart */
 #product-list, #cart {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 15px;
+    overflow: hidden;
 }
 
+/* Headings */
 h2 {
     margin-top: 0;
 }
 
+/* Product Styling */
 .product {
     display: flex;
     align-items: center;
@@ -49,6 +59,14 @@ h2 {
     margin-right: 15px;
 }
 
+/* Consistent Fixed Image Size */
+.product img {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: cover;
+}
+
+/* Product Info */
 .product-info {
     flex: 1;
 }
@@ -64,6 +82,7 @@ h2 {
     margin: 5px 0;
 }
 
+/* Buttons */
 button {
     background-color: #ff6f61;
     color: white;
@@ -84,6 +103,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
+/* Cart */
 #cart {
     display: flex;
     flex-direction: column;
@@ -95,6 +115,7 @@ button:disabled {
     overflow: hidden;
 }
 
+/* Cart Table */
 .cart-table {
     width: 100%;
     border-collapse: collapse;
@@ -106,13 +127,8 @@ button:disabled {
     border-bottom: 1px solid #ddd;
 }
 
-.cart-table td.item-qty, .cart-table td.item-total {
-    text-align: left; /* Align to the left for all cells */
-}
-
 #cart-total {
     font-family: 'Courier New', Courier, monospace;
-    text-align: left; /* Align total to the left */
     padding: 10px;
     border-top: 1px solid #ddd;
     font-weight: bold;
@@ -121,6 +137,7 @@ button:disabled {
     width: fit-content;
 }
 
+/* Mobile Styles */
 @media (max-width: 768px) {
     .cart-table td {
         font-size: 0.9em;
@@ -135,7 +152,6 @@ button:disabled {
 @media (max-width: 480px) {
     .cart-table td {
         display: block;
-        text-align: left; /* Ensure text is left-aligned */
         padding: 8px 0;
     }
 
@@ -146,6 +162,7 @@ button:disabled {
     }
 }
 
+/* Quantity Controls */
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -159,7 +176,6 @@ button:disabled {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
-    transition: background-color 0.3s;
 }
 
 .quantity-btn:hover {
@@ -171,42 +187,7 @@ button:disabled {
     font-size: 1.2em;
 }
 
-/* Centering and adjusting spacing for the header and button */
-/* Adjust the header to only show the logo */
-/* Centering and adjusting spacing for the logo */
-.header-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.logo {
-    width: 80px; /* Increase size for more prominence */
-    height: 80px;
-    border-radius: 50%; /* Makes the image round */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a soft shadow for depth */
-    border: 2px solid #f0f0f0; /* Optional: adds a subtle border */
-    object-fit: cover; /* Ensures the logo fits nicely within the round shape */
-    transition: transform 0.3s ease; /* Adds a stylish hover effect */
-}
-
-.logo:hover {
-    transform: scale(1.1); /* Slight zoom on hover for interaction */
-}
-
-
-/* Center the Japar List button and move it down */
-.button-container {
-    text-align: center;
-    margin-top: 30px;
-}
-
-#open-japar-list-btn {
-    padding: 10px 20px;
-    font-size: 1.2em;
-}
-
-
-/* Modal styles */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -226,6 +207,8 @@ button:disabled {
     width: 90%;
     max-width: 500px;
     position: relative;
+    overflow-y: auto; /* Allow scrolling inside modal */
+    max-height: 80vh; /* Restrict modal height to viewport height */
 }
 
 .close-btn {
@@ -239,55 +222,29 @@ button:disabled {
 .modal-scrollable {
     max-height: 60vh;
     overflow-y: auto;
-    padding: 10px;
 }
 
-.product {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
+/* Fixed Product Image Size in Modal */
+.modal-content img {
+    max-width: 100%; 
+    height: 300px; /* Fixed height */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
-.product img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.product-info {
-    flex-grow: 1;
-    margin-left: 10px;
-}
-
-.product-name {
-    font-size: 1.2em;
-    margin: 0;
-}
-
-.product-price {
-    margin: 5px 0;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-}
-
-.quantity-btn {
-    padding: 5px 10px;
-    font-size: 1em;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.quantity-display {
-    font-size: 1.2em;
-    min-width: 30px;
+/* Center the Japar List Button */
+.button-container {
     text-align: center;
+    margin-top: 30px;
 }
 
-/* Responsive styles */
+#open-japar-list-btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+}
+
+/* Responsive Modal */
 @media (max-width: 600px) {
     .modal-content {
         width: 95%;
@@ -299,46 +256,42 @@ button:disabled {
     }
 }
 
-/*skjdjs*/
-#cart {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    padding: 10px;
-    border-top: 2px solid #ccc;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
+/* Logo Styling */
+.header-container {
+    text-align: center;
 }
 
-#modal-image {
-    width: 100%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Ensure image doesn't exceed modal width */
-    max-height: 100%; /* Ensure image doesn't exceed modal height */
-    object-fit: contain; /* Ensure image is contained within modal */
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* Close button for the modal */
-.close-image-modal {
-    position: absolute;
-    bottom: 20px; /* Position at the bottom with a 20px gap */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Offset the position to truly center */
-    font-size: 30px; /* Adjust size as needed */
-    font-weight: bold;
-    color: #fff; /* Text color */
-    background-color: #000; /* Button color */
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Button Centering */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#open-japar-list-btn {
+    background-color: #ff6f61;
+    color: white;
     border: none;
-    border-radius: 50%; /* Make it round */
-    width: 50px; /* Width of the button */
-    height: 50px; /* Height of the button */
-    display: flex; /* Flexbox for centering text */
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    z-index: 1001; /* Ensure it's on top */
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
 }
 
-.close-image-modal:hover {
-    background-color: #f00; /* Change background color on hover */
+#open-japar-list-btn:hover {
+    background-color: #e55b50;
 }
