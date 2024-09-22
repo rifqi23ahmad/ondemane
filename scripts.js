@@ -6,12 +6,13 @@ document.querySelectorAll(".product img").forEach(image => {
     image.addEventListener('click', function () {
         modalImage.src = this.src;  // Set modal image source to the clicked image
         imageModal.style.display = "block";  // Show the modal
-    });
+    });       
 });
 
 closeImageModal.onclick = function () {
     imageModal.style.display = "none";  // Close the modal
 };
+
 
 // Get modal element
 const japarModal = document.getElementById("japar-list-modal");
@@ -32,6 +33,11 @@ closeModalBtn.onclick = () => {
 window.onclick = (event) => {
     if (event.target === japarModal) {
         japarModal.style.display = "none";
+    }
+};
+window.onclick = (event) => {
+    if (event.target === imageModal) {
+        imageModal.style.display = "none";
     }
 };
 
