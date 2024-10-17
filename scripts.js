@@ -86,27 +86,37 @@ function updateCartUI() {
     const table = document.createElement('table');
     table.className = 'cart-table';
 
+    // Heading for the table (optional)
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `
+        <th class="cart-header">Produk</th>
+        <th class="cart-header">Qty</th>
+        <th class="cart-header">Total</th>
+    `;
+    table.appendChild(headerRow);
+
     for (const [name, item] of Object.entries(cart)) {
         if (item.quantity > 0) {
-        const row = document.createElement('tr');
+            const row = document.createElement('tr');
 
-        const itemName = document.createElement('td');
-        itemName.className = 'item-name';
-        itemName.textContent = name;
+            const itemName = document.createElement('td');
+            itemName.className = 'item-name';
+            itemName.textContent = name;
 
-        const itemQty = document.createElement('td');
-        itemQty.className = 'item-qty';
-        itemQty.textContent = item.quantity;
+            const itemQty = document.createElement('td');
+            itemQty.className = 'item-qty';
+            itemQty.textContent = item.quantity;
 
-        const itemTotal = document.createElement('td');
-        itemTotal.className = 'item-total';
-        itemTotal.textContent = formatCurrency(item.totalPrice);
+            const itemTotal = document.createElement('td');
+            itemTotal.className = 'item-total';
+            itemTotal.textContent = formatCurrency(item.totalPrice);
 
-        row.appendChild(itemName);
-        row.appendChild(itemQty);
-        row.appendChild(itemTotal);
+            row.appendChild(itemName);
+            row.appendChild(itemQty);
+            row.appendChild(itemTotal);
 
-        table.appendChild(row);
+            table.appendChild(row);
+        }
     }
 
     cartItems.appendChild(table);
@@ -114,11 +124,11 @@ function updateCartUI() {
     cartTotal.innerHTML = `Total Pesanan: ${formatCurrency(total)}`;
     checkoutBtn.disabled = total === 0;
 }
-}
 
 function formatCurrency(value) {
     return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 }
+
 
 function checkout() {
     if (total === 0) return;
@@ -146,8 +156,8 @@ function checkout() {
         orderSummary += `\n*Total Pesanan:* ${formatCurrency(total).padStart(15)}\n`;
 
         // Add GoPay payment information
-        orderSummary += '\nPembayaran dapat dilakukan melalui GoPay ke:\n';
-        orderSummary += '📱 *0859-1067-36685* (GoPay)\n';
+        orderSummary += '\nPembayaran dapat dilakukan menggunakan Cash atau GoPay ke:\n';
+        orderSummary += '📱 *0859-1067-36685*\n';
         orderSummary += 'Terima kasih atas pesanan Anda! 🙏\n';
 
         const encodedSummary = encodeURIComponent(orderSummary);
