@@ -133,9 +133,8 @@ function formatCurrency(value) {
 function checkout() {
     if (total === 0) return;
 
-    let orderSummary = '-------------Onde Mane-------------\n\n';
+    let orderSummary = '*Nota Pembayaran Onde Mane*\n\n';
     orderSummary += 'Qty        Harga            Jajanan\n';
-    orderSummary += '---------------------------------------\n';
 
     let hasItems = false; // Flag to check if there are items with a quantity greater than 0
 
@@ -153,7 +152,7 @@ function checkout() {
 
     // Only proceed if there are items in the cart
     if (hasItems) {
-        orderSummary += `\n*Total Pesanan:* ${formatCurrency(total).padStart(15)}\n`;
+        orderSummary += `\n*Total Pesanan: ${formatCurrency(total).padStart(15)}*\n`;
 
         // Add GoPay payment information
         orderSummary += '\nPembayaran dapat dilakukan menggunakan Cash atau GoPay ke:\n';
