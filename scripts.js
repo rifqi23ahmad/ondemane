@@ -12,6 +12,13 @@ document.querySelectorAll(".product img").forEach(image => {
 closeImageModal.onclick = function () {
     imageModal.style.display = "none";  // Close the modal
 };
+imageModal.addEventListener('click', function(event) {
+    // Check if the target is the modal background (not the modal content)
+    if (event.target === imageModal) {
+        closeModal();
+    }
+});
+
 
 
 // Get modal element
@@ -30,16 +37,13 @@ closeModalBtn.onclick = () => {
 };
 
 // Close modal when clicking outside the modal content
+
 window.onclick = (event) => {
     if (event.target === japarModal) {
         japarModal.style.display = "none";
     }
 };
-window.onclick = (event) => {
-    if (event.target === imageModal) {
-        imageModal.style.display = "none";
-    }
-};
+
 
 // Cart and Quantity Management
 let cart = {};
@@ -115,6 +119,7 @@ function updateCartUI() {
 function formatCurrency(value) {
     return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 }
+
 function checkout() {
     if (total === 0) return;
 
@@ -140,10 +145,16 @@ function checkout() {
     if (hasItems) {
         orderSummary += `\n*Total Pesanan:* ${formatCurrency(total).padStart(15)}\n`;
 
+        // Add GoPay payment information
+        orderSummary += '\nPembayaran dapat dilakukan melalui GoPay ke:\n';
+        orderSummary += '📱 *0859-1067-36685* (GoPay)\n';
+        orderSummary += 'Terima kasih atas pesanan Anda! 🙏\n';
+
         const encodedSummary = encodeURIComponent(orderSummary);
         window.location.href = `https://wa.me/6285174000214?text=${encodedSummary}`;
     }
 }
+
 
     function closeModal() {
         modal.style.display = 'none';
